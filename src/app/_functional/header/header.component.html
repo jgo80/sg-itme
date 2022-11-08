@@ -1,0 +1,71 @@
+<div class="bg" [ngStyle]="{ 'background-image': 'url( ../assets/jpg/' + background + '.jpg )' }"></div>
+<div class="bg-gradient"></div>
+<div class="container">
+    <div class="inner hcenter">
+        <div class="logo tcenter" [inlineSVG]="'../assets/svg/logo.svg'" routerLink="/"> </div>
+        <div class="hidden-md menu menu-burger" (click)="menuMobile = true">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="grid menu tcenter hidden-sm">
+            <div class="col menu-link">
+                <a routerLink="/" [ngClass]="{ 'menu-link-active': url === '' }">
+                    Kunden
+                </a>
+            </div>
+            <div class="col menu-link">
+                <a routerLink="/loesungen" [ngClass]="{ 'menu-link-active': url === 'loesungen' }">
+                    Lösungen
+                </a>
+            </div>
+            <div class="col menu-link">
+                <a routerLink="/fallstudien" [ngClass]="{ 'menu-link-active': url === 'fallstudien' }">
+                    Fallstudien
+                </a>
+            </div>
+            <div class="col menu-link">
+                <a routerLink="/team" [ngClass]="{ 'menu-link-active': url === 'team' }">
+                    Team
+                </a>
+            </div>
+            <div class="col menu-link">
+                <a routerLink="/kontakt" [ngClass]="{ 'menu-link-active': url === 'kontakt' }">
+                    Kontakt
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="menu-mobile" *ngIf="menuMobile">
+    <div class="inner">
+        <div class="logo tcenter" [inlineSVG]="'../assets/svg/logo.svg'" routerLink="/" (click)="menuMobile = false"> </div>
+        <div class="grid menu tcenter">
+            <div class="col menu-link">
+                <a routerLink="/" (click)="menuMobile = false" [ngClass]="{ 'menu-link-active': url === '' }">
+                    Kunden
+                </a>
+            </div>
+            <div class="col menu-link">
+                <a routerLink="/loesungen" (click)="menuMobile = false" [ngClass]="{ 'menu-link-active': url === 'loesungen' }">
+                    Lösungen
+                </a>
+            </div>
+            <div class="col menu-link">
+                <a routerLink="/fallstudien" (click)="menuMobile = false" [ngClass]="{ 'menu-link-active': url === 'fallstudien' }">
+                    Fallstudien
+                </a>
+            </div>
+            <div class="col menu-link">
+                <a routerLink="/team" (click)="menuMobile = false" [ngClass]="{ 'menu-link-active': url === 'team' }">
+                    Team
+                </a>
+            </div>
+            <div class="col menu-link">
+                <a routerLink="/kontakt" (click)="menuMobile = false" [ngClass]="{ 'menu-link-active': url === 'kontakt' }">
+                    Kontakt
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

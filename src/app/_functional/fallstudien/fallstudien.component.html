@@ -1,0 +1,133 @@
+<!-- Header -->
+<app-header [background]="'o1'"></app-header>
+
+<!-- Content -->
+<div class="container">
+  <div class="inner hcenter">
+    <div class="image-top sg-fallstudien">
+      <img class="sg-fallstudien-1" src="../assets/png/sg_fallstudien-1.png" />
+      <img class="sg-fallstudien-2" src="../assets/png/sg_fallstudien-2.png" />
+    </div>
+    <div class="grid">
+      <div class="col col-2 box box-blue pb6">
+        <h1>
+          {{ fallstudien.length }} Fallstudien aus der Praxis als
+          <span class="nowrap">IT Management Experts</span>
+        </h1>
+        <p>
+          In den letzten
+          <strong>10 Jahren</strong> haben wir
+          <strong>über 100 Projekte</strong> erfolgreich mit unseren Kunden
+          umgesetzt. Eine echte Team-Leistung, die uns mit Stolz erfüllt.
+        </p>
+        <p>
+          Vermutlich wären wir noch einmal genau so lange beschäftigt, Ihnen
+          ausführlich von allen Erfolgsrezepten, Tipps und Kniffen zu berichten,
+          die wir in diese Aufträge eingebracht haben.
+        </p>
+        <p>
+          <strong>Mit unseren Fallstudien</strong> möchten wir Ihnen gerne einen
+          ersten kleinen Einblick in unsere Arbeit geben.
+        </p>
+        <p>
+          Wenn Sie hierzu Fragen haben oder einfach gerne einmal Ihre Themen mit
+          uns diskutieren möchten, dann sprechen Sie uns gerne an!
+        </p>
+        <p>
+          Wir freuen uns auf Ihren Anruf oder Ihre E-Mail an
+          <a href="mailto:hello@sgcompany.de"> hello@sgcompany.de </a>
+        </p>
+        <a href="tel:+497032815141">
+          <div class="box box-contact">
+            <span class="i" [inlineSVG]="'../assets/svg/phone.svg'"></span>07032
+            / 815141
+          </div>
+        </a>
+      </div>
+      <div class="col col-2 box">
+        <h1>
+          Lösungen filtern
+          <span class="i" [inlineSVG]="'../assets/svg/filter.svg'"></span>
+        </h1>
+        <div class="tag-wrapper tag-wrapper-solution">
+          <div
+            class="tag"
+            [ngClass]="{ 'tag-solution': currentSolution === '' }"
+            (click)="filterSolution('')"
+          >
+            Alle
+          </div>
+          <div
+            class="tag tag-solution"
+            *ngFor="let solution of solutions"
+            [ngClass]="{ 'tag-solution': currentSolution === solution.name }"
+            (click)="filterSolution(solution.name)"
+          >
+            {{ solution.name }}
+          </div>
+        </div>
+        <h1>
+          Beratungsfelder filtern
+          <span class="i" [inlineSVG]="'../assets/svg/filter.svg'"></span>
+        </h1>
+        <div class="tag-wrapper tag-wrapper-area">
+          <div
+            class="tag"
+            [ngClass]="{ 'tag-area': currentArea === '' }"
+            (click)="filterArea('')"
+          >
+            Alle
+          </div>
+          <div
+            class="tag"
+            *ngFor="let area of areas"
+            [ngClass]="{ 'tag-area': currentArea === area.name }"
+            (click)="filterArea(area.name)"
+          >
+            {{ area.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div
+        class="col col-2 box pb7"
+        *ngFor="let fallstudie of currentFallstudien"
+      >
+        <h1>{{ fallstudie.title }}</h1>
+        <ul>
+          <li *ngFor="let mission of fallstudie.missions">
+            {{ mission }}
+          </li>
+        </ul>
+        <div class="tag-box-wrapper">
+          <div
+            class="tag tag-solution box tag-solution-box"
+            (click)="filterSolution(fallstudie.solution); filterArea('')"
+          >
+            {{ fallstudie.solution }}
+          </div>
+          <div
+            class="tag tag-area box tag-area-box"
+            (click)="filterSolution(''); filterArea(fallstudie.area)"
+          >
+            {{ fallstudie.area }}
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="col col-2 box box-empty"
+        *ngIf="isOdd(currentFallstudien.length)"
+      ></div>
+    </div>
+    <div class="grid" *ngIf="currentFallstudien.length < 1">
+      <div class="col box box-empty">
+        <h1 class="tcenter grey">
+          Für diese Komnbination aus Lösung und Beratungsfeld haben wir keine
+          Fallstudie erstellt. Bitte wählen Sie einen anderen Filter.
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
